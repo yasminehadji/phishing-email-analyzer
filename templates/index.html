@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero"><small>PYTHON • CYBERSECURITY</small><h1>Phishing Email Analyzer</h1>
+<p>Upload an .eml file to detect common phishing indicators.</p></section>
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+<section class="card"><h2>Analyze an email</h2><form action="/analyze" method="post" enctype="multipart/form-data">
+<input type="file" name="email_file" accept=".eml" required><button>Analyze email</button></form></section>
+<div class="cards"><section class="card"><h3>🔎 Detection</h3><p>URLs, language, Reply-To and attachments.</p></section>
+<section class="card"><h3>📊 Risk score</h3><p>Transparent score from 0 to 100.</p></section>
+<section class="card"><h3>💾 SQLite</h3><p>Local analysis history.</p></section></div>{% endblock %}

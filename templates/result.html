@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}
+<a href="/">← Analyze another email</a><section class="result"><small>ANALYSIS RESULT</small><h1>{{ result.level }}</h1><div class="score">{{ result.score }}<i>/100</i></div><p>{{ result.summary }}</p></section>
+<div class="cards two"><section class="card"><h2>Email</h2><p><b>Sender:</b> {{ email.sender or "Unknown" }}</p><p><b>Reply-To:</b> {{ email.reply_to or "None" }}</p><p><b>Subject:</b> {{ email.subject or "None" }}</p></section>
+<section class="card"><h2>URLs</h2>{% for url in email.urls %}<p class="url">{{ url }}</p>{% else %}<p>No URLs.</p>{% endfor %}</section></div>
+<section class="card"><h2>Indicators</h2>{% for x in result.indicators %}<div class="indicator {{x.severity}}"><span><b>{{x.severity|upper}}</b> — {{x.message}}</span><b>+{{x.points}}</b></div>{% else %}<p>None.</p>{% endfor %}</section>
+{% endblock %}
